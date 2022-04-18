@@ -38,7 +38,7 @@ def run():
         chat1 = dict(Name = names, Message =  messages)
         st.table(chat1)
     except ValueError:
-        st.title("Enter your name and message into the sidebar, and post!")
+        st.text("To submit a comment, input the information into the sidebar")
     #st.text_input(label='Textbox 1', key='first', on_change=update_first)
 
 
