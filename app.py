@@ -6,7 +6,8 @@ import streamlit as st
 #     i += 1
 #     st.empty
 #     st.write(str(i))
-
+def update_first():
+    st.session_state.second = st.session_state.first
 
 def run():
     st.title('Counter - Braiden Hook')
@@ -18,6 +19,8 @@ def run():
         st.session_state.count += 1
         
     st.write('Count = ', st.session_state.count)
+    st.text_input(label='Textbox 1', key='first', on_change=update_first)
+
 
 
 
