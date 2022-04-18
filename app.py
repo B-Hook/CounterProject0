@@ -33,12 +33,15 @@ def run():
     if st.sidebar.button("Post chat message"):
         chat.append((name,message))
 
+    st.text("To submit a comment, input the information into the sidebar")
+
     try:
         names, messages = zip(*chat)
         chat1 = dict(Name = names, Message =  messages)
         st.table(chat1)
     except ValueError:
-        st.text("To submit a comment, input the information into the sidebar")
+        st.text("")
+        
     #st.text_input(label='Textbox 1', key='first', on_change=update_first)
 
 
