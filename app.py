@@ -6,11 +6,31 @@ import streamlit as st
 #     i += 1
 #     st.empty
 #     st.write(str(i))
-def update_first():
-    st.session_state.second = st.session_state.first
+
+@st.cache(allow_output_mutation=True)
+def Chat():
+    return []
+
+#def update_first():
+#    st.session_state.second = st.session_state.first
 
 def run():
     st.title('Counter - Braiden Hook')
+
+    chat=Chat()
+    name = st.sidebar.text_input("Name")
+    message = st.sidebar.text_area("Message")
+    if st.sidebar.button("Post chat message"):
+        chat.append((name,message))
+
+    try:
+        names, messages = zip(*chat)
+        chat1 = dict(Name = names, Message =  messages)
+        st.table(chat1)
+    except ValueError:
+        st.title("Enter your name and message into the sidebar, and post!")
+
+    
     if 'count' not in st.session_state:
         st.session_state.count = 0
 
@@ -19,7 +39,7 @@ def run():
         st.session_state.count += 1
         
     st.write('Count = ', st.session_state.count)
-    st.text_input(label='Textbox 1', key='first', on_change=update_first)
+    #st.text_input(label='Textbox 1', key='first', on_change=update_first)
 
 
 
