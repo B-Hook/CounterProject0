@@ -9,7 +9,7 @@ import streamlit as st
 
 
 def run():
-    st.title('Counter Example')
+    st.title('Counter - Braiden Hook')
     if 'count' not in st.session_state:
         st.session_state.count = 0
 
