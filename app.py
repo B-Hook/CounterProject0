@@ -20,6 +20,16 @@ def run():
     chat=Chat()
     name = st.sidebar.text_input("Name")
     message = st.sidebar.text_area("Message")
+
+    if 'count' not in st.session_state:
+        st.session_state.count = 0
+
+    increment = st.button('Increment')
+    if increment:
+        st.session_state.count += 1
+        
+    st.write('Count = ', st.session_state.count)
+    
     if st.sidebar.button("Post chat message"):
         chat.append((name,message))
 
@@ -29,16 +39,6 @@ def run():
         st.table(chat1)
     except ValueError:
         st.title("Enter your name and message into the sidebar, and post!")
-
-    
-    if 'count' not in st.session_state:
-        st.session_state.count = 0
-
-    increment = st.button('Increment')
-    if increment:
-        st.session_state.count += 1
-        
-    st.write('Count = ', st.session_state.count)
     #st.text_input(label='Textbox 1', key='first', on_change=update_first)
 
 
